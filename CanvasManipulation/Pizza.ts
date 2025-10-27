@@ -5,8 +5,8 @@ namespace Pizza {
     function handleLoad(): void {
         drawPizza()
     }
-    function prompt(): void{
-        console.log("Please enter the Number of triangles you'd like your Pizza to be sliced in: ")
+    function playerEnter(): void{
+        triamount: parseInt = console.log("Please enter the Number of triangles you'd like your Pizza to be sliced in: ")
     }
     function drawPizza(): void {
         canvas=document.querySelector("canvas")!;

@@ -7,8 +7,8 @@ var Pizza;
     function handleLoad() {
         drawPizza();
     }
-    function prompt() {
-        console.log("Please enter the Number of triangles you'd like your Pizza to be sliced in: ");
+    function playerEnter() {
+        triamount: parseInt = console.log("Please enter the Number of triangles you'd like your Pizza to be sliced in: ");
     }
     function drawPizza() {
         canvas = document.querySelector("canvas");
