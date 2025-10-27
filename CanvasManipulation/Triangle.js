@@ -29,3 +29,4 @@ var Drei;
         crc2.stroke();
     }
 })(Drei || (Drei = {}));
+//# sourceMappingURL=Triangle.js.map

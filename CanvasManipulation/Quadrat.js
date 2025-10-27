@@ -15,3 +15,4 @@ var Canvas;
         crc2.fillRect(0, 0, randomwidth, randomheight);
     }
 })(Canvas || (Canvas = {}));
+//# sourceMappingURL=Quadrat.js.map
