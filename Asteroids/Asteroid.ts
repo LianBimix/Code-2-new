@@ -7,10 +7,9 @@ namespace Asteroids {
 
         public constructor(_size: number, _position?: Vector) {
             if (_position)
-                this.position = _position;
+                this.position = _position.copy();
             else
                 this.position = new Vector(0, 0);
-            this.position = new Vector(0, 0);
             this.velocity = new Vector(0, 0);
             this.velocity.random(100, 200);
             this.type = Math.floor(Math.random() * 4);

@@ -3,7 +3,7 @@ var Asteroids;
 (function (Asteroids) {
     window.addEventListener("load", handleload);
     const asteroids = [];
-    function handleload(_event) {
+    function handleload() {
         console.log("Starting Asteroids!");
         const canvas = document.querySelector("canvas");
         if (!canvas) {
@@ -13,7 +13,6 @@ var Asteroids;
         Asteroids.crc2.fillStyle = "#000000ff";
         Asteroids.crc2.strokeStyle = "#ff3232ff";
         Asteroids.createPaths();
-        console.log("Asteroids paths: ", Asteroids.asteroidPaths);
         createAsteroids(5);
         //createShip();
         //canvas.addEventListener("mousedown", loadLaser); 
@@ -21,10 +20,6 @@ var Asteroids;
         //canvas.addEventListener("keypress", handleKeypress); 
         //canvas.addEventListener("mousemove", setHeading);
         window.setInterval(update, 20);
-        const asteroid = new Asteroids.Asteroid(1);
-        console.log(asteroid);
-        asteroid.draw();
-        asteroid.move(0.1);
     }
     function shootLaser(_event) {
         console.log("Laser is shooting");
@@ -48,20 +43,19 @@ var Asteroids;
                 const fragment = new Asteroids.Asteroid(_asteroid.size / 2, _asteroid.position);
                 fragment.velocity.add(_asteroid.velocity);
                 asteroids.push(fragment);
+                console.log(fragment.position);
             }
         }
         const index = asteroids.indexOf(_asteroid);
         asteroids.splice(index, 1);
     }
     function createAsteroids(_nAsteroids) {
-        console.log("Creating asteroids");
         for (let i = 0; i < _nAsteroids; i++) {
             const asteroid = new Asteroids.Asteroid(1.0);
             asteroids.push(asteroid);
         }
     }
     function update() {
-        console.log("Update!!!");
         Asteroids.crc2.fillRect(0, 0, Asteroids.crc2.canvas.width, Asteroids.crc2.canvas.height);
         for (const asteroid of asteroids) {
             asteroid.move(1 / 50);

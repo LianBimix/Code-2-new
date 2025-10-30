@@ -4,7 +4,7 @@ namespace Asteroids {
 
     const asteroids: Asteroid[] = [];
 
-    function handleload(_event: Event): void {
+    function handleload(): void {
         console.log("Starting Asteroids!");
         const canvas: HTMLCanvasElement | null = document.querySelector("canvas");
         if (!canvas) {
@@ -15,7 +15,6 @@ namespace Asteroids {
         crc2.strokeStyle = "#ff3232ff";
 
         createPaths();
-        console.log("Asteroids paths: ", asteroidPaths);
         createAsteroids(5);
         //createShip();
         //canvas.addEventListener("mousedown", loadLaser); 
@@ -23,10 +22,6 @@ namespace Asteroids {
         //canvas.addEventListener("keypress", handleKeypress); 
         //canvas.addEventListener("mousemove", setHeading);
         window.setInterval(update, 20);
-        const asteroid: Asteroid = new Asteroid(1);
-        console.log(asteroid);
-        asteroid.draw();
-        asteroid.move(0.1);
     }
     function shootLaser(_event: MouseEvent): void {
         console.log("Laser is shooting"); 
@@ -50,20 +45,19 @@ namespace Asteroids {
                 const fragment: Asteroid = new Asteroid(_asteroid.size/2, _asteroid.position);
                 fragment.velocity.add(_asteroid.velocity);
                 asteroids.push(fragment);
+                console.log(fragment.position);
             }
         }
         const index: number = asteroids.indexOf(_asteroid);
         asteroids.splice(index,1);
     }
     function createAsteroids(_nAsteroids: number): void {
-        console.log("Creating asteroids");
         for (let i: number = 0; i < _nAsteroids; i++) {
             const asteroid: Asteroid = new Asteroid(1.0);
             asteroids.push(asteroid);
         }
     }
     function update(): void {
-        console.log("Update!!!");
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         for (const asteroid of asteroids) {
             asteroid.move(1 / 50);
