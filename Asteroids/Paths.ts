@@ -56,7 +56,7 @@ namespace Asteroids {
         path.lineTo(20, 13);
         path.lineTo(43, 13);
         path.closePath();
-
+        
         path.moveTo(4, 25);
         path.lineTo(59, 25);
         path.closePath();

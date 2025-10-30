@@ -6,8 +6,11 @@ var Asteroids;
         velocity;
         type;
         size;
-        constructor(_size) {
-            console.log("Asteroid constructor");
+        constructor(_size, _position) {
+            if (_position)
+                this.position = _position;
+            else
+                this.position = new Asteroids.Vector(0, 0);
             this.position = new Asteroids.Vector(0, 0);
             this.velocity = new Asteroids.Vector(0, 0);
             this.velocity.random(100, 200);
@@ -15,7 +18,6 @@ var Asteroids;
             this.size = _size;
         }
         move(_timeslice) {
-            console.log("Asteroid move");
             const offset = new Asteroids.Vector(this.velocity.x, this.velocity.y);
             offset.scale(_timeslice);
             this.position.add(offset);
@@ -29,13 +31,18 @@ var Asteroids;
                 this.position.y -= Asteroids.crc2.canvas.height;
         }
         draw() {
-            console.log("Asteroid draw");
             Asteroids.crc2.save();
             Asteroids.crc2.translate(this.position.x, this.position.y);
             Asteroids.crc2.scale(this.size, this.size);
             Asteroids.crc2.translate(-50, -50);
+            Asteroids.crc2.lineWidth = 2 / this.size;
             Asteroids.crc2.stroke(Asteroids.asteroidPaths[this.type]);
             Asteroids.crc2.restore();
+        }
+        isHit(_hotspot) {
+            const hitsize = 50 * this.size;
+            const difference = new Asteroids.Vector(_hotspot.x - this.position.x, _hotspot.y - this.position.y);
+            return (Math.abs(difference.x) < hitsize && Math.abs(difference.y) < hitsize);
         }
     }
     Asteroids.Asteroid = Asteroid;

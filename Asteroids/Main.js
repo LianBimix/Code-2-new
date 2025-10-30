@@ -2,21 +2,73 @@
 var Asteroids;
 (function (Asteroids) {
     window.addEventListener("load", handleload);
+    const asteroids = [];
     function handleload(_event) {
         console.log("Starting Asteroids!");
         const canvas = document.querySelector("canvas");
         if (!canvas) {
             return;
-            Asteroids.crc2 = canvas?.getContext("2d");
-            Asteroids.crc2.fillStyle = "#000000ff";
-            Asteroids.crc2.strokeStyle = "#ff0000ff";
-            Asteroids.createPaths();
-            console.log("Asteroids paths: ", Asteroids.asteroidPaths);
-            const asteroid = new Asteroids.Asteroid(1);
-            console.log(asteroid);
-            asteroid.draw();
-            asteroid.move(0.1);
         }
+        Asteroids.crc2 = canvas?.getContext("2d");
+        Asteroids.crc2.fillStyle = "#000000ff";
+        Asteroids.crc2.strokeStyle = "#ff3232ff";
+        Asteroids.createPaths();
+        console.log("Asteroids paths: ", Asteroids.asteroidPaths);
+        createAsteroids(5);
+        //createShip();
+        //canvas.addEventListener("mousedown", loadLaser); 
+        canvas.addEventListener("mousedown", shootLaser);
+        //canvas.addEventListener("keypress", handleKeypress); 
+        //canvas.addEventListener("mousemove", setHeading);
+        window.setInterval(update, 20);
+        const asteroid = new Asteroids.Asteroid(1);
+        console.log(asteroid);
+        asteroid.draw();
+        asteroid.move(0.1);
+    }
+    function shootLaser(_event) {
+        console.log("Laser is shooting");
+        const hotspot = new Asteroids.Vector(_event.clientX - Asteroids.crc2.canvas.offsetLeft, _event.clientY - Asteroids.crc2.canvas.offsetTop);
+        const asteroidHit = getAsteroidHit(hotspot);
+        if (asteroidHit) {
+            breakAsteroid(asteroidHit);
+        }
+    }
+    function getAsteroidHit(_hotspot) {
+        for (const asteroid of asteroids) {
+            if (asteroid.isHit(_hotspot)) {
+                return asteroid;
+            }
+        }
+        return null;
+    }
+    function breakAsteroid(_asteroid) {
+        if (_asteroid.size > 0.3) {
+            for (let i = 0; i < 2; i++) {
+                const fragment = new Asteroids.Asteroid(_asteroid.size / 2, _asteroid.position);
+                fragment.velocity.add(_asteroid.velocity);
+                asteroids.push(fragment);
+            }
+        }
+        const index = asteroids.indexOf(_asteroid);
+        asteroids.splice(index, 1);
+    }
+    function createAsteroids(_nAsteroids) {
+        console.log("Creating asteroids");
+        for (let i = 0; i < _nAsteroids; i++) {
+            const asteroid = new Asteroids.Asteroid(1.0);
+            asteroids.push(asteroid);
+        }
+    }
+    function update() {
+        console.log("Update!!!");
+        Asteroids.crc2.fillRect(0, 0, Asteroids.crc2.canvas.width, Asteroids.crc2.canvas.height);
+        for (const asteroid of asteroids) {
+            asteroid.move(1 / 50);
+            asteroid.draw();
+        }
+        //ship.draw();
+        //handleCollisions();
     }
 })(Asteroids || (Asteroids = {}));
 //# sourceMappingURL=Main.js.map
