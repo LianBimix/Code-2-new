@@ -2,6 +2,12 @@
 var Asteroids;
 (function (Asteroids) {
     window.addEventListener("load", handleload);
+    const m = new Moveable();
+    const a = new Asteroids.Asteroid(1);
+    const p = new Projectile(new Asteroids.Vector(0, 0), new Asteroids.Vector(0, 0));
+    const moveables = [];
+    moveables.push(new Asteroids.Asteroid(1));
+    moveables.push(new Projectile(new Asteroids.Vector(0, 0), new Asteroids.Vector(0, 0)));
     const asteroids = [];
     function handleload() {
         console.log("Starting Asteroids!");

@@ -17,6 +17,12 @@ var Farm;
         subtraction(_subtracted) {
             this.consumption -= _subtracted.consumption;
         }
+        doStuff() { }
+        ;
+        doGreen() { }
+        ;
+        doSpecialAction() { }
+        ;
     }
     Farm.Animal = Animal;
 })(Farm || (Farm = {}));

@@ -16,5 +16,8 @@ namespace Farm{
         public subtraction(_subtracted: Animal): void {
             this.consumption -=_subtracted.consumption;
         }
+        public doStuff():void {};
+        public doGreen(): void {};
+        public doSpecialAction():void {};
     }
 }

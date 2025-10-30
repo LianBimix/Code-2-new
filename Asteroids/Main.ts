@@ -1,6 +1,12 @@
 namespace Asteroids {
     window.addEventListener("load", handleload);
     export let crc2: CanvasRenderingContext2D;
+    const m: Moveable = new Moveable();
+    const a: Moveable = new Asteroid(1);
+    const p: Moveable = new Projectile(new Vector(0, 0), new Vector(0, 0));
+    const moveables: Moveable[] = [];
+    moveables.push(new Asteroid(1));
+    moveables.push(new Projectile(new Vector(0, 0), new Vector(0, 0)));
 
     const asteroids: Asteroid[] = [];
 
