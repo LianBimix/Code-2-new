@@ -1,12 +1,13 @@
 "use strict";
 var Asteroids;
 (function (Asteroids) {
-    class Asteroid {
+    class Asteroid extends Asteroids.Moveable {
         position;
         velocity;
         type;
         size;
         constructor(_size, _position) {
+            super(_position);
             if (_position)
                 this.position = _position.copy();
             else
@@ -15,19 +16,6 @@ var Asteroids;
             this.velocity.random(100, 200);
             this.type = Math.floor(Math.random() * 4);
             this.size = _size;
-        }
-        move(_timeslice) {
-            const offset = new Asteroids.Vector(this.velocity.x, this.velocity.y);
-            offset.scale(_timeslice);
-            this.position.add(offset);
-            if (this.position.x < 0)
-                this.position.x += Asteroids.crc2.canvas.width;
-            if (this.position.y < 0)
-                this.position.y += Asteroids.crc2.canvas.height;
-            if (this.position.x > Asteroids.crc2.canvas.width)
-                this.position.x -= Asteroids.crc2.canvas.width;
-            if (this.position.y > Asteroids.crc2.canvas.height)
-                this.position.y -= Asteroids.crc2.canvas.height;
         }
         draw() {
             Asteroids.crc2.save();
