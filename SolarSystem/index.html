@@ -12,6 +12,20 @@
     <script src="ChainedTransforms.js"></script>
 </head>
 <body>
-    
+    <div class="slider">
+    <input type="range" min="0" max="2" value="1" step="1">
+    <span id="speedvalue">Change speed of simulation</span>
+    </div>
+
+<canvas id="centerCanvas" width="1650" height="900"></canvas>
+
+<script>
+    const canvas = document.getElementById('centerCanvas');
+    const ctx = canvas.getContext('2d');
+    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.fillStyle = 'black';
+    ctx.fillRect(-25, -25, 50, 50);
+</script>
+
 </body>
 </html>
