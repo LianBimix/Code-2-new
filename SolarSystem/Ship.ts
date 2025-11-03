@@ -8,8 +8,9 @@ namespace SolarSystem {
             this.velociy = _velocity; 
             this.destination = _destionation;
         }
-        public setDestination(): void{
-            
+        public setNewDestination(_currentDestination: Planet): void{
+            this.destination = destinations.random(0,this.destinations.lenght -1);
+            if()
         }
     }
 }
