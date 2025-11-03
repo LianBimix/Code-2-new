@@ -9,7 +9,10 @@ var SolarSystem;
             this.velociy = _velocity;
             this.destination = _destionation;
         }
-        setDestination() {
+        setNewDestination(_currentDestination) {
+            this.destination = destinations.random(0, this.destinations.lenght - 1);
+            if ()
+                ;
         }
     }
     SolarSystem.Ship = Ship;
