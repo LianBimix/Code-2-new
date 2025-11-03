@@ -9,7 +9,7 @@ namespace SolarSystem {
             this.destination = _destionation;
         }
         public setDestination(): void{
-
+            
         }
     }
 }
