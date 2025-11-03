@@ -1,8 +1,8 @@
 "use strict";
-var solarSystem;
-(function (solarSystem) {
+var SolarSystem;
+(function (SolarSystem) {
     function getRandomNumber(_max, _min) {
         return Math.floor(Math.random() * (_max - _min) + _min);
     }
-})(solarSystem || (solarSystem = {}));
+})(SolarSystem || (SolarSystem = {}));
 //# sourceMappingURL=functions.js.map
