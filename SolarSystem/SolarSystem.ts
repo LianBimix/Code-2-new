@@ -8,28 +8,28 @@ namespace SolarSystem {
     function hndLoad(): void {
         console.log("solarsystem start");
 
-        const canvas: HTMLCanvasElement | null = document.querySelector("2d");
+        const canvas: HTMLCanvasElement | null = document.querySelector("canvas");
         if (!canvas) {
             return;
         }
         slider = document.getElementById("speedvalue") as HTMLInputElement;
 
         crc2 = <CanvasRenderingContext2D>canvas?.getContext("2d");
-        crc2.fillStyle = "#000000ff"
-
-
+        crc2.fillStyle = "#000000ff";
+        
+        
         createBodies();
-
+        
         canvas.addEventListener("mouseup", hndClick);
         slider.addEventListener("input", hndSlider);
-
-
-
+        
+        
+        
         window.setInterval(update, 20);
     }
-
+    
     function createBodies(): void {
-        // const sun: Planet = new Planet()
+        const sun: Planet = new Planet()
         // const ship: Ship = new Ship()
         // const jupiter: Planet = new Planet()
         // const iO: Planet = new Planet()
@@ -75,7 +75,5 @@ namespace SolarSystem {
         //need move objekts
         //need draw objekts
     }
-
-
 }
     

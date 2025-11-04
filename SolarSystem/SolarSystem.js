@@ -5,7 +5,7 @@ var SolarSystem;
     let slider;
     function hndLoad() {
         console.log("solarsystem start");
-        const canvas = document.querySelector("2d");
+        const canvas = document.querySelector("canvas");
         if (!canvas) {
             return;
         }
@@ -18,7 +18,7 @@ var SolarSystem;
         window.setInterval(update, 20);
     }
     function createBodies() {
-        // const sun: Planet = new Planet()
+        const sun = new SolarSystem.Planet();
         // const ship: Ship = new Ship()
         // const jupiter: Planet = new Planet()
         // const iO: Planet = new Planet()

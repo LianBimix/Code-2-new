@@ -12,6 +12,7 @@ namespace SolarSystem {
             this.rotationPoint = _rotationPoint; 
             this.type =_type;
         }
+        //public draw(): void {}
     }
     export enum CELEST {
         PLANET, 

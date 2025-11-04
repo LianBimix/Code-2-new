@@ -38,6 +38,7 @@ var SolarSystem;
             if (gamba == 100) {
             }
         }
+        draw() { }
     }
     SolarSystem.Ship = Ship;
 })(SolarSystem || (SolarSystem = {}));

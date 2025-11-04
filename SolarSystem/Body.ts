@@ -1,5 +1,5 @@
 namespace SolarSystem {
-    export class Body {
+    export abstract class Body {
         public position: Vector; 
         public description: string; 
 
@@ -7,6 +7,6 @@ namespace SolarSystem {
             this.position = _position; 
             this.description = _description;
         }
-        public draw ():void{}
+        public abstract draw ():void;
     }
 }

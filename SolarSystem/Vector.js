@@ -9,6 +9,10 @@ var SolarSystem;
             this.x = _x;
             this.y = _y;
         }
+        static getDifference(_v0, _v1) {
+            const vector = new Vector(_v0.x - _v1.x, _v0.y - _v1.y);
+            return vector;
+        }
         scale(_factor) {
             this.x *= _factor;
             this.y *= _factor;

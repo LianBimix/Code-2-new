@@ -39,5 +39,6 @@ namespace SolarSystem {
 
             }
         }
+        public draw():void {}
     }
 }
