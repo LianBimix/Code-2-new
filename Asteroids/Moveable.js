@@ -25,7 +25,6 @@ var Asteroids;
             if (this.position.y > Asteroids.crc2.canvas.height)
                 this.position.y -= Asteroids.crc2.canvas.height;
         }
-        draw() { }
     }
     Asteroids.Moveable = Moveable;
 })(Asteroids || (Asteroids = {}));

@@ -1,5 +1,5 @@
 namespace Asteroids {
-    export class Moveable {
+    export abstract class Moveable {
         public position: Vector;
         public velocity: Vector;
         public expandable: boolean = false;
@@ -25,7 +25,7 @@ namespace Asteroids {
             if (this.position.y > crc2.canvas.height)
                 this.position.y -= crc2.canvas.height
         }
-        public draw(): void {}
+        public abstract draw(): void;
         
     }
 }

@@ -2,18 +2,11 @@
 var Asteroids;
 (function (Asteroids) {
     class Asteroid extends Asteroids.Moveable {
-        position;
-        velocity;
-        type;
         size;
+        type;
         constructor(_size, _position) {
             super(_position);
-            if (_position)
-                this.position = _position.copy();
-            else
-                this.position = new Asteroids.Vector(0, 0);
-            this.velocity = new Asteroids.Vector(0, 0);
-            this.velocity.random(100, 200);
+            this.velocity = Asteroids.Vector.getRandom(100, 200);
             this.type = Math.floor(Math.random() * 4);
             this.size = _size;
         }
@@ -28,7 +21,7 @@ var Asteroids;
         }
         isHit(_hotspot) {
             const hitsize = 50 * this.size;
-            const difference = new Asteroids.Vector(_hotspot.x - this.position.x, _hotspot.y - this.position.y);
+            const difference = Asteroids.Vector.getDifference(_hotspot, this.position);
             return (Math.abs(difference.x) < hitsize && Math.abs(difference.y) < hitsize);
         }
     }
