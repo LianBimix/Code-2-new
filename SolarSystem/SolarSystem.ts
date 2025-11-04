@@ -1,8 +1,10 @@
 namespace SolarSystem {
-     window.addEventListener("load", hndLoad);
+    window.addEventListener("load", hndLoad);
+    export let canvas: HTMLCanvasElement; 
     export let crc2: CanvasRenderingContext2D;
     let slider: HTMLInputElement;
     const objects:Body[]=[];
+    export const destinations: CelestialBody[]=[];
 
 
 
@@ -50,7 +52,7 @@ namespace SolarSystem {
         // const proteus: Planet = new Planet()
         // const neeid: Planet = new Planet()
         // const deinos: Planet = new Planet()
-
+        destinations.push();
     }
 
 
@@ -61,29 +63,21 @@ namespace SolarSystem {
     }
 
     function hndClick(_event: MouseEvent): void {
-
-        // const clickPosition: Vector = (_event.clientX, _event.clientY)
-        // getMouseTarget();
+        const clickPosition: Vector = new Vector(_event.clientX, _event.clientY)
+        getMouseTarget(clickPosition);
     }
 
     function getMouseTarget(_clientPosition: Vector): Body| null {
-        for (const object in objects){
-
-            let hit = inHitRange(_clientPosition);
-            if ( hit = true){
-                return object;
+        for (let i: number = 0; i<objects.length -1; i++){
+            if (objects[i].position == _clientPosition) {
+                return objects[i];
             }
-            else
-                return null;
-
         }
+        return null;
     }
-
-    function inHitRange(_clientposition:Vector): boolean{
-        const hitsize:number = 
+    function openDescription() {
 
     }
-
 
     function update(): void {
 

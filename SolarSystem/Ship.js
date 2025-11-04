@@ -13,7 +13,7 @@ var SolarSystem;
             this.destination = _destionation;
         }
         setNewDestination(_currentDestination) {
-            this.destination = destinations.random(0, this.destinations.length - 1);
+            this.destination = sunArray.random(0, this.sunArray.length - 1);
             if (this.position = _currentDestination.position) {
                 return;
             }
@@ -38,7 +38,19 @@ var SolarSystem;
             if (gamba == 100) {
             }
         }
-        draw() { }
+        draw() {
+            SolarSystem.canvas = document.querySelector("canvas");
+            SolarSystem.crc2 = SolarSystem.canvas.getContext("2d");
+            SolarSystem.crc2.beginPath();
+            SolarSystem.crc2.lineWidth = 0.5;
+            SolarSystem.crc2.moveTo(5, 0);
+            SolarSystem.crc2.lineTo(5, 5);
+            SolarSystem.crc2.lineTo(0, 5);
+            SolarSystem.crc2.closePath();
+            SolarSystem.crc2.fillStyle = "#84a6b8ff";
+            SolarSystem.crc2.fill();
+            SolarSystem.crc2.stroke();
+        }
     }
     SolarSystem.Ship = Ship;
 })(SolarSystem || (SolarSystem = {}));
