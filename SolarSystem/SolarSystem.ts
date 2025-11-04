@@ -2,6 +2,7 @@ namespace SolarSystem {
      window.addEventListener("load", hndLoad);
     export let crc2: CanvasRenderingContext2D;
     let slider: HTMLInputElement;
+    const objects:Body[]=[];
 
 
 
@@ -65,15 +66,32 @@ namespace SolarSystem {
         // getMouseTarget();
     }
 
-    function getMouseTarget(_clientPosition: Vector): void {
+    function getMouseTarget(_clientPosition: Vector): Body| null {
+        for (const object in objects){
 
+            let hit = inHitRange(_clientPosition);
+            if ( hit = true){
+                return object;
+                
+
+            }else
+                return null;
+
+        }
+    }
+
+    function inHitRange(_clientposition:Vector): boolean{
+        const hitsize:number = 
 
     }
+
+
     function update(): void {
 
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         //need move objekts
         //need draw objekts
+        //coordinateShip()
     }
 }
     
