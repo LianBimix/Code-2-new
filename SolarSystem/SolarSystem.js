@@ -3,6 +3,7 @@ var SolarSystem;
 (function (SolarSystem) {
     window.addEventListener("load", hndLoad);
     let slider;
+    const objects = [];
     function hndLoad() {
         console.log("solarsystem start");
         const canvas = document.querySelector("2d");
@@ -47,11 +48,23 @@ var SolarSystem;
         // getMouseTarget();
     }
     function getMouseTarget(_clientPosition) {
+        for (const object in objects) {
+            let hit = inHitRange(_clientPosition);
+            if (hit = true) {
+                return object;
+            }
+            else
+                return null;
+        }
+    }
+    function inHitRange(_clientposition) {
+        const hitsize = ;
     }
     function update() {
         SolarSystem.crc2.fillRect(0, 0, SolarSystem.crc2.canvas.width, SolarSystem.crc2.canvas.height);
         //need move objekts
         //need draw objekts
+        //coordinateShip()
     }
 })(SolarSystem || (SolarSystem = {}));
 //# sourceMappingURL=SolarSystem.js.map
