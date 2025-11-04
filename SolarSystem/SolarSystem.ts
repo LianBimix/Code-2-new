@@ -30,7 +30,7 @@ namespace SolarSystem {
     }
     
     function createBodies(): void {
-        //const sun: Planet = new Planet()
+        // const sun: Planet = new Planet()
         // const ship: Ship = new Ship()
         // const jupiter: Planet = new Planet()
         // const iO: Planet = new Planet()

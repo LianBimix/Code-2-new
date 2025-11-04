@@ -19,7 +19,7 @@ var SolarSystem;
         window.setInterval(update, 20);
     }
     function createBodies() {
-        //const sun: Planet = new Planet()
+        // const sun: Planet = new Planet()
         // const ship: Ship = new Ship()
         // const jupiter: Planet = new Planet()
         // const iO: Planet = new Planet()
