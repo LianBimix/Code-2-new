@@ -1,10 +1,11 @@
 namespace Asteroids {
     export class Projectile extends Moveable {
-        public livespan: number = 2;
+        private static maxLivespan: number = 2;
+        private remainingLivetime: number;
 
         public constructor(_position: Vector, _velocity: Vector) {
             super(_position);
-
+            this.remainingLivetime= Projectile.maxLivespan;
             this.velocity = _velocity.copy();
         }
         public draw(): void {
@@ -15,8 +16,8 @@ namespace Asteroids {
         }
         public move(_timeslice: number): void {
             super.move(_timeslice);
-            this.livespan -= _timeslice;
-            if (this.livespan < 0)
+            this.remainingLivetime -= _timeslice;
+            if (this.remainingLivetime < 0)
                 this.expandable = true;
         }
     }

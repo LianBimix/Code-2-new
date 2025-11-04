@@ -24,19 +24,21 @@ namespace Asteroids {
 
         createPaths();
         createAsteroids(5);
-        //createShip();
-        canvas.addEventListener("mouseup", shootProjectile);
+        createUfo(1);
+        canvas.addEventListener("ufoShoots", handleUfoShot);
         canvas.addEventListener("mousedown", shootLaser);
         //canvas.addEventListener("keypress", handleKeypress); 
         //canvas.addEventListener("mousemove", setHeading);
         window.setInterval(update, 20);
     }
-    function shootProjectile(_event: MouseEvent): void {
-        const origin: Vector = new Vector(_event.clientX - crc2.canvas.offsetLeft, _event.clientY - crc2.canvas.offsetTop);
-        const velocity: Vector = new Vector(0, 0);
-        velocity.random(100, 100);
-        const projectile: Projectile = new Projectile(origin, velocity);
+    function shootProjectile(_origin: Vector): void {
+        const velocity: Vector = Vector.getRandom(100, 100);
+        const projectile: Projectile = new Projectile(_origin, velocity);
         moveables.push(projectile);
+    }
+    function handleUfoShot(_event: Event): void{
+        const ufo : Ufo = (<CustomEvent> _event).detail.ufo;
+        shootProjectile(ufo.position);
     }
     function shootLaser(_event: MouseEvent): void {
         console.log("Laser is shooting");
@@ -68,6 +70,12 @@ namespace Asteroids {
         for (let i: number = 0; i < _nAsteroids; i++) {
             const asteroid: Asteroid = new Asteroid(1.0);
             moveables.push(asteroid);
+        }
+    }
+    function createUfo(_nUfo: number): void {
+        for (let i: number = 0; i < _nUfo; i++) {
+            const ufo: Ufo = new Ufo();
+            moveables.push(ufo);
         }
     }
     function update(): void {

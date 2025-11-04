@@ -8,6 +8,10 @@ namespace SolarSystem {
             this.x = _x;
             this.y = _y;
         }
+        public static getDifference(_v0: Vector, _v1: Vector): Vector {
+            const vector: Vector = new Vector(_v0.x - _v1.x, _v0.y - _v1.y);
+            return vector
+        }
         public scale(_factor: number): void {
             this.x *= _factor;
             this.y *= _factor;

@@ -3,15 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Document</title>
+=======
+    <title>Ariel Waschpods™ - An epic solar system simulation!</title>
     <script src="Planet.js"> </script>
     <script src="CelestialBody.js"></script>
     <script src="SolarSystem.js"></script>
     <script src="Ship.js"></script>
+>>>>>>> bfcc3b7f41a63f935e3c3a6e7d249887e878a6ce
     <script src="Body.js"></script>
+    <script src="Vector.js"></script>
+    <script src="CelestialBody.js"></script>
+    <script src="Planet.js"> </script>
+    <script src="Ship.js"></script>
     <script src="ChainedTransforms.js"></script>
+    <script src="SolarSystem.js"></script>
 </head>
 <body>
-    
+    <div class="slider">
+    <input type="range" min="0" max="2" value="1" step="1">
+    <span id="speedvalue">Change Speed</span>
+    </div>
+
+<canvas id="centerCanvas" width="1650" height="900"></canvas>
+
+<script>
+    const canvas = document.getElementById('centerCanvas');
+    const ctx = canvas.getContext('2d');
+    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.fillStyle = 'black';
+    ctx.fillRect(-820, -410, 1650, 900);
+</script>
+
 </body>
 </html>

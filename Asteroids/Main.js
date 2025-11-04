@@ -22,19 +22,21 @@ var Asteroids;
         Asteroids.crc2.lineWidth = Asteroids.lineWidth;
         Asteroids.createPaths();
         createAsteroids(5);
-        //createShip();
-        canvas.addEventListener("mouseup", shootProjectile);
+        createUfo(1);
+        canvas.addEventListener("ufoShoots", handleUfoShot);
         canvas.addEventListener("mousedown", shootLaser);
         //canvas.addEventListener("keypress", handleKeypress); 
         //canvas.addEventListener("mousemove", setHeading);
         window.setInterval(update, 20);
     }
-    function shootProjectile(_event) {
-        const origin = new Asteroids.Vector(_event.clientX - Asteroids.crc2.canvas.offsetLeft, _event.clientY - Asteroids.crc2.canvas.offsetTop);
-        const velocity = new Asteroids.Vector(0, 0);
-        velocity.random(100, 100);
-        const projectile = new Asteroids.Projectile(origin, velocity);
+    function shootProjectile(_origin) {
+        const velocity = Asteroids.Vector.getRandom(100, 100);
+        const projectile = new Asteroids.Projectile(_origin, velocity);
         moveables.push(projectile);
+    }
+    function handleUfoShot(_event) {
+        const ufo = _event.detail.ufo;
+        shootProjectile(ufo.position);
     }
     function shootLaser(_event) {
         console.log("Laser is shooting");
@@ -66,6 +68,12 @@ var Asteroids;
         for (let i = 0; i < _nAsteroids; i++) {
             const asteroid = new Asteroids.Asteroid(1.0);
             moveables.push(asteroid);
+        }
+    }
+    function createUfo(_nUfo) {
+        for (let i = 0; i < _nUfo; i++) {
+            const ufo = new Asteroids.Ufo();
+            moveables.push(ufo);
         }
     }
     function update() {

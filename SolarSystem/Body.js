@@ -8,7 +8,6 @@ var SolarSystem;
             this.position = _position;
             this.description = _description;
         }
-        draw() { }
     }
     SolarSystem.Body = Body;
 })(SolarSystem || (SolarSystem = {}));

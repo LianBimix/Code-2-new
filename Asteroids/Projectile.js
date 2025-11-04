@@ -2,9 +2,11 @@
 var Asteroids;
 (function (Asteroids) {
     class Projectile extends Asteroids.Moveable {
-        livespan = 2;
+        static maxLivespan = 2;
+        remainingLivetime;
         constructor(_position, _velocity) {
             super(_position);
+            this.remainingLivetime = Projectile.maxLivespan;
             this.velocity = _velocity.copy();
         }
         draw() {
@@ -15,8 +17,8 @@ var Asteroids;
         }
         move(_timeslice) {
             super.move(_timeslice);
-            this.livespan -= _timeslice;
-            if (this.livespan < 0)
+            this.remainingLivetime -= _timeslice;
+            if (this.remainingLivetime < 0)
                 this.expandable = true;
         }
     }

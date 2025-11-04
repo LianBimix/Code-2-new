@@ -1,18 +1,11 @@
 namespace Asteroids {
     export class Asteroid extends Moveable {
-        public position: Vector;
-        public velocity: Vector;
-        public type: number;
         public size: number;
+        private type: number;
 
         public constructor(_size: number, _position?: Vector) {
             super(_position);
-            if (_position)
-                this.position = _position.copy();
-            else
-                this.position = new Vector(0, 0);
-            this.velocity = new Vector(0, 0);
-            this.velocity.random(100, 200);
+            this.velocity = Vector.getRandom(100,200);
             this.type = Math.floor(Math.random() * 4);
             this.size = _size;
         }
@@ -27,7 +20,7 @@ namespace Asteroids {
         }
         public isHit(_hotspot: Vector): boolean {
             const hitsize: number = 50 * this.size;
-            const difference: Vector = new Vector(_hotspot.x - this.position.x, _hotspot.y - this.position.y);
+            const difference: Vector = Vector.getDifference(_hotspot, this.position);
             return (Math.abs(difference.x) < hitsize && Math.abs(difference.y) < hitsize);
         }
     }
