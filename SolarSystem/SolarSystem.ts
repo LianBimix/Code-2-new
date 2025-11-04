@@ -54,7 +54,7 @@ namespace SolarSystem {
 
 
     function hndSlider(): void {
-        console.log(slider.value);
+        console.log("SLIEDEEEEEER" + slider.value);
         
 
     }
