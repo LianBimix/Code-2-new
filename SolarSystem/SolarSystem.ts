@@ -4,7 +4,7 @@ namespace SolarSystem {
     export let crc2: CanvasRenderingContext2D;
     let slider: HTMLInputElement;
     const objects:Body[]=[];
-    export const destinations: CelestialBody[]=[];
+    //export const destinations: CelestialBody[]=[];
 
 
 

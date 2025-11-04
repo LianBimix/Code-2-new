@@ -4,7 +4,7 @@ var SolarSystem;
     window.addEventListener("load", hndLoad);
     let slider;
     const objects = [];
-    SolarSystem.destinations = [];
+    //export const destinations: CelestialBody[]=[];
     function hndLoad() {
         console.log("solarsystem start");
         const canvas = document.querySelector("canvas");
@@ -40,7 +40,7 @@ var SolarSystem;
         // const proteus: Planet = new Planet()
         // const neeid: Planet = new Planet()
         // const deinos: Planet = new Planet()
-        SolarSystem.destinations.push();
+        destinations.push();
     }
     function hndSlider() {
         console.log("SLIEDEEEEEER" + slider.value);
