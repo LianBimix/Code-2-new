@@ -40,26 +40,29 @@ var SolarSystem;
         // const neeid: Planet = new Planet()
         // const deinos: Planet = new Planet()
     }
-    function hndSlider() {
-        console.log("SLIEDEEEEEER" + slider.value);
-    }
-    function hndClick(_event) {
-        // const clickPosition: Vector = (_event.clientX, _event.clientY)
-        // getMouseTarget();
-    }
-    function getMouseTarget(_clientPosition) {
-        for (const object in objects) {
-            let hit = inHitRange(_clientPosition);
-            if (hit = true) {
-                return object;
-            }
-            else
-                return null;
-        }
-    }
-    function inHitRange(_clientposition) {
-        const hitsize = ;
-    }
+    // function hndSlider(): void {
+    //     console.log("SLIEDEEEEEER" + slider.value);
+    // }
+    // function hndClick(_event: MouseEvent): void {
+    //      const clickPosition: Vector 
+    //      clickPosition.x = _event.clientX
+    //      clickPosition.y = _event.clientY
+    //      getMouseTarget(clickPosition);
+    // }
+    // function getMouseTarget(_clientPosition: Vector): Body| null {
+    //     for (const object in objects){
+    //         let hit = inHitRange(_clientPosition.x  - this.);
+    //         if ( hit = true){
+    //             return object;
+    //         }
+    //         else
+    //             return null;
+    //     }
+    // }
+    // function inHitRange(_clientposition:Vector): boolean{
+    //     const hitsize:number = 5;
+    //     const getDifference: Vector = new Vector(_clientposition.x - this.position.x)
+    // }
     function update() {
         SolarSystem.crc2.fillRect(0, 0, SolarSystem.crc2.canvas.width, SolarSystem.crc2.canvas.height);
         //need move objekts

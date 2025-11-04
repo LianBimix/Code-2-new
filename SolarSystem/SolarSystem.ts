@@ -54,35 +54,38 @@ namespace SolarSystem {
     }
 
 
-    function hndSlider(): void {
-        console.log("SLIEDEEEEEER" + slider.value);
+    // function hndSlider(): void {
+    //     console.log("SLIEDEEEEEER" + slider.value);
         
 
-    }
+    // }
 
-    function hndClick(_event: MouseEvent): void {
+    // function hndClick(_event: MouseEvent): void {
 
-        // const clickPosition: Vector = (_event.clientX, _event.clientY)
-        // getMouseTarget();
-    }
+    //      const clickPosition: Vector 
+    //      clickPosition.x = _event.clientX
+    //      clickPosition.y = _event.clientY
+    //      getMouseTarget(clickPosition);
+    // }
 
-    function getMouseTarget(_clientPosition: Vector): Body| null {
-        for (const object in objects){
+    // function getMouseTarget(_clientPosition: Vector): Body| null {
+    //     for (const object in objects){
 
-            let hit = inHitRange(_clientPosition);
-            if ( hit = true){
-                return object;
-            }
-            else
-                return null;
+    //         let hit = inHitRange(_clientPosition.x  - this.);
+    //         if ( hit = true){
+    //             return object;
+    //         }
+    //         else
+    //             return null;
 
-        }
-    }
+    //     }
+    // }
 
-    function inHitRange(_clientposition:Vector): boolean{
-        const hitsize:number = 
+    // function inHitRange(_clientposition:Vector): boolean{
+    //     const hitsize:number = 5;
+    //     const getDifference: Vector = new Vector(_clientposition.x - this.position.x)
 
-    }
+    // }
 
 
     function update(): void {

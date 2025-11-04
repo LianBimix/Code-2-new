@@ -22,5 +22,11 @@ namespace SolarSystem{
             crc2.fillStyle = gradient;
             console.log("Planeeeeeeet")
         }
+
+        public orbit():void{
+            
+
+        }
     }
+
 }

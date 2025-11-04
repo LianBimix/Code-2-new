@@ -21,6 +21,8 @@ var SolarSystem;
             SolarSystem.crc2.fillStyle = gradient;
             console.log("Planeeeeeeet");
         }
+        orbit() {
+        }
     }
     SolarSystem.CelestialBody = CelestialBody;
 })(SolarSystem || (SolarSystem = {}));
