@@ -12,7 +12,7 @@ namespace SolarSystem {
             this.destination = _destionation;
         }
         public setNewDestination(_currentDestination: Planet): void{
-            this.destination = destinations.random(0,this.destinations.length -1);
+            this.destination = sunArray.random(0,this.sunArray.length -1);
             if(this.position=_currentDestination.position) {
                 return;
             }
@@ -39,6 +39,19 @@ namespace SolarSystem {
 
             }
         }
-        public draw():void {}
+        public draw():void {
+        canvas=document.querySelector("canvas")!;
+        crc2=canvas.getContext("2d")!;
+        crc2.beginPath();
+        crc2.lineWidth = 0.5;
+        crc2.moveTo(5,0);
+        crc2.lineTo(5,5); 
+        crc2.lineTo(0,5);
+        crc2.closePath();
+
+        crc2.fillStyle = "#84a6b8ff";
+        crc2.fill();
+        crc2.stroke();
+        }
     }
 }

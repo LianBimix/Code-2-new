@@ -4,6 +4,7 @@ var SolarSystem;
     window.addEventListener("load", hndLoad);
     let slider;
     const objects = [];
+    //export const destinations: CelestialBody[]=[];
     function hndLoad() {
         console.log("solarsystem start");
         const canvas = document.querySelector("canvas");
@@ -19,7 +20,7 @@ var SolarSystem;
         window.setInterval(update, 20);
     }
     function createBodies() {
-        //const sun: Planet = new Planet()
+        // const sun: Planet = new Planet()
         // const ship: Ship = new Ship()
         // const jupiter: Planet = new Planet()
         // const iO: Planet = new Planet()
@@ -39,26 +40,24 @@ var SolarSystem;
         // const proteus: Planet = new Planet()
         // const neeid: Planet = new Planet()
         // const deinos: Planet = new Planet()
+        destinations.push();
     }
     function hndSlider() {
         console.log("SLIEDEEEEEER" + slider.value);
     }
     function hndClick(_event) {
-        // const clickPosition: Vector = (_event.clientX, _event.clientY)
-        // getMouseTarget();
+        const clickPosition = new SolarSystem.Vector(_event.clientX, _event.clientY);
+        getMouseTarget(clickPosition);
     }
     function getMouseTarget(_clientPosition) {
-        for (const object in objects) {
-            let hit = inHitRange(_clientPosition);
-            if (hit = true) {
-                return object;
+        for (let i = 0; i < objects.length - 1; i++) {
+            if (objects[i].position == _clientPosition) {
+                return objects[i];
             }
-            else
-                return null;
         }
+        return null;
     }
-    function inHitRange(_clientposition) {
-        const hitsize = ;
+    function openDescription() {
     }
     function update() {
         SolarSystem.crc2.fillRect(0, 0, SolarSystem.crc2.canvas.width, SolarSystem.crc2.canvas.height);
