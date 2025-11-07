@@ -1,0 +1,27 @@
+.ui-canvas {
+  font-family: Consolas, "Courier New", monospace;
+  font-weight: bold;
+  color: yellow;
+  
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+  padding: 0.2rem;
+}
+
+span[is="ui-fps"] {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+span[is="ui-time"] {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+}
+
+fudge-boolean,
+fudge-color,
+fudge-stepper,
+fudge-select {
+  display: block;
+}

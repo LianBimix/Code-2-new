@@ -1,0 +1,41 @@
+{
+  "name": "fudge",
+  "version": "1.0.0",
+  "description": "Furtwangen University Didactic Game Editor (FUDGE)",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron Editor/Electron",
+    "build": "electron-packager Editor/Electron FUDGE --icon=Miscellaneous/Logo/Fudge_360.png --overwrite --all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hs-furtwangen/FUDGE.git"
+  },
+  "keywords": [
+    "FUDGE"
+  ],
+  "author": "Jirka Dell'Oro-Friedl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hs-furtwangen/FUDGE/issues"
+  },
+  "homepage": "https://github.com/hs-furtwangen/FUDGE#readme",
+  "dependencies": {
+    "@electron/remote": "^2.1.3",
+    "@types/node": "^24.9.2",
+    "@types/webxr": "^0.5.24",
+    "@types/ws": "^8.18.1",
+    "electron": "^30.0.2",
+    "webrtc-adapter": "^9.0.3",
+    "websocket": "^1.0.35",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin-ts": "^4.4.1",
+    "eslint": "^9.38.0",
+    "typedoc": "^0.28.14",
+    "typedoc-plugin-merge-modules": "^7.0.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.2"
+  }
+}
