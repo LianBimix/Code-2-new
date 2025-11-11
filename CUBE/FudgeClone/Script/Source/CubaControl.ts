@@ -48,7 +48,7 @@ namespace Script {
       this.node.mtxLocal.rotateY(f.Keyboard.mapToTrit([f.KEYBOARD_CODE.A],[f.KEYBOARD_CODE.D])); 
     }
 
-    public drive = (_forwar: number): void => {
+    public drive = (_forward: number): void => {
       //let node: f.Node = this.node; 
       //let cmpTransform: f.ComponentTransform = node.getComponent(f.ComponentTransform); 
       this.node.mtxLocal.translateZ(0.5*f.Keyboard.mapToTrit([f.KEYBOARD_CODE.S],[f.KEYBOARD_CODE.W])); 

@@ -6,7 +6,7 @@ declare namespace Script {
         hndEvent: (_event: Event) => void;
         update: (_event: Event) => void;
         rotate: (_angle: number) => void;
-        drive: (_forwar: number) => void;
+        drive: (_forward: number) => void;
     }
 }
 declare namespace Script {

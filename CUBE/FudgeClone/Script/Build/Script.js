@@ -35,7 +35,7 @@ var Script;
                 //let cmpTransform: f.ComponentTransform = node.getComponent(f.ComponentTransform); 
                 this.node.mtxLocal.rotateY(f.Keyboard.mapToTrit([f.KEYBOARD_CODE.A], [f.KEYBOARD_CODE.D]));
             };
-            this.drive = (_forwar) => {
+            this.drive = (_forward) => {
                 //let node: f.Node = this.node; 
                 //let cmpTransform: f.ComponentTransform = node.getComponent(f.ComponentTransform); 
                 this.node.mtxLocal.translateZ(0.5 * f.Keyboard.mapToTrit([f.KEYBOARD_CODE.S], [f.KEYBOARD_CODE.W]));
@@ -58,6 +58,7 @@ var Script;
     let viewport;
     //let cuba: CubaControl;
     document.addEventListener("interactiveViewportStarted", start);
+    document.addEventListener("mousedown", hndMouseClick);
     async function start(_event) {
         viewport = _event.detail;
         const cubaNode = viewport.getBranch().getChildByName("CUBA");
@@ -70,21 +71,26 @@ var Script;
             const position = f.random.getVector3(new f.Vector3(30, 0, 30), new f.Vector3(-30, 0, -30));
             cubaInstance.mtxLocal.translate(position);
             cubaNode.getParent().addChild(cubaInstance);
+            getDistance(cubaInstance, viewport.getRayFromClient);
         }
-        //document.addEventListener("mousemove", hndMouseMove);
         //document.addEventListener("keydown", drive);
         f.Loop.addEventListener("loopFrame" /* f.EVENT.LOOP_FRAME */, update);
         f.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
     }
-    // function hndMouseMove(_event: MouseEvent): void {
-    //   viewport.getBranch().getChildByName("CUBA").getComponent(CustomComponentScript).rotator(_event.movementX);
-    // }
-    // function drive (KeyboardEvent): void {
-    //   const driving = f.Keyboard.mapToTrit([f.KEYBOARD_CODE.A],[f.KEYBOARD_CODE.D]);
-    //   console.log(mapT)
-    //   if (f.Keyboard.isPressedOne([f.KEYBOARD_CODE.A]))
-    //   viewport.getBranch().getChildByName("CUBA").getComponent(CustomComponentScript).driver(_event.key);
-    // }
+    function getDistance(_car, _pointer) {
+    }
+    function hndMouseClick(_event) {
+        if (_event.button != 2)
+            return;
+        const vecScreen = new f.Vector2(_event.offsetX, _event.offsetY);
+        const ray = viewport.getRayFromClient(vecScreen);
+        console.log(ray);
+        const cubas = viewport.getBranch().getChildrenByName("CUBA");
+        for (const cuba of cubas) {
+            const vecDistance = ray.getDistance(cuba.mtxWorld.translation);
+            console.log(vecDistance.magnitude);
+        }
+    }
     function update() {
         // ƒ.Physics.simulate();  // if physics is included and used
         viewport.draw();
