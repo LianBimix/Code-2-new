@@ -86,9 +86,9 @@
             }
           }
         ],
-        "CustomComponentScript": [
+        "CubaControl": [
           {
-            "Script.CustomComponentScript": {
+            "Script.CubaControl": {
               "active": true,
               "message": "CustomComponentScript added to "
             }
