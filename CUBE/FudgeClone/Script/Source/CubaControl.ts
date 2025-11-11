@@ -33,25 +33,27 @@ namespace Script {
           break;
         case f.EVENT.NODE_DESERIALIZED:
           // if deserialized the node is now fully reconstructed and access to all its components and children is possible
-          // f.Loop.addEventListener(f.EVENT.LOOP_FRAME, this.update);
+          //f.Loop.addEventListener(f.EVENT.LOOP_FRAME, this.update);
           break;
       }
+
     }
 
     public update = (_event: Event): void => {
       //this.drive();
       //this.rotate();
     }
-    public rotate = (_angle: number):void => {
+    
+    public rotate = (_angle: number): void => {
       //let node: f.Node = this.node; 
       //let cmpTransform: f.ComponentTransform = node.getComponent(f.ComponentTransform); 
-      this.node.mtxLocal.rotateY(f.Keyboard.mapToTrit([f.KEYBOARD_CODE.A],[f.KEYBOARD_CODE.D])); 
+      this.node.mtxLocal.rotateY(_angle);
     }
 
     public drive = (_forward: number): void => {
       //let node: f.Node = this.node; 
       //let cmpTransform: f.ComponentTransform = node.getComponent(f.ComponentTransform); 
-      this.node.mtxLocal.translateZ(0.5*f.Keyboard.mapToTrit([f.KEYBOARD_CODE.S],[f.KEYBOARD_CODE.W])); 
+      this.node.mtxLocal.translateZ(_forward);
     }
 
   }

@@ -89,8 +89,7 @@
         "CubaControl": [
           {
             "Script.CubaControl": {
-              "active": true,
-              "message": "CustomComponentScript added to "
+              "active": true
             }
           }
         ],

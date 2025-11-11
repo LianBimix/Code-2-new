@@ -22,7 +22,7 @@ var Script;
                         break;
                     case "nodeDeserialized" /* f.EVENT.NODE_DESERIALIZED */:
                         // if deserialized the node is now fully reconstructed and access to all its components and children is possible
-                        // f.Loop.addEventListener(f.EVENT.LOOP_FRAME, this.update);
+                        //f.Loop.addEventListener(f.EVENT.LOOP_FRAME, this.update);
                         break;
                 }
             };
@@ -33,12 +33,12 @@ var Script;
             this.rotate = (_angle) => {
                 //let node: f.Node = this.node; 
                 //let cmpTransform: f.ComponentTransform = node.getComponent(f.ComponentTransform); 
-                this.node.mtxLocal.rotateY(f.Keyboard.mapToTrit([f.KEYBOARD_CODE.A], [f.KEYBOARD_CODE.D]));
+                this.node.mtxLocal.rotateY(_angle);
             };
             this.drive = (_forward) => {
                 //let node: f.Node = this.node; 
                 //let cmpTransform: f.ComponentTransform = node.getComponent(f.ComponentTransform); 
-                this.node.mtxLocal.translateZ(0.5 * f.Keyboard.mapToTrit([f.KEYBOARD_CODE.S], [f.KEYBOARD_CODE.W]));
+                this.node.mtxLocal.translateZ(_forward);
             };
             // Don't start when running in editor
             if (f.Project.mode == f.MODE.EDITOR)
@@ -56,13 +56,13 @@ var Script;
     var f = FudgeCore;
     f.Debug.info("Main Program Template running!");
     let viewport;
-    //let cuba: CubaControl;
+    let cuba;
+    let control = new f.Control("Cuba", 0.5, 0 /* f.CONTROL_TYPE.PROPORTIONAL */);
     document.addEventListener("interactiveViewportStarted", start);
-    document.addEventListener("mousedown", hndMouseClick);
     async function start(_event) {
         viewport = _event.detail;
         const cubaNode = viewport.getBranch().getChildByName("CUBA");
-        //cuba = cubaNode.getComponent(CubaControl); 
+        cuba = cubaNode.getComponent(Script.CubaControl);
         const cubaGraph = f.Project.getResourcesByName("CUBA")[0];
         console.log(cubaGraph);
         for (let i = 0; i < 10; i++) {
@@ -71,13 +71,11 @@ var Script;
             const position = f.random.getVector3(new f.Vector3(30, 0, 30), new f.Vector3(-30, 0, -30));
             cubaInstance.mtxLocal.translate(position);
             cubaNode.getParent().addChild(cubaInstance);
-            getDistance(cubaInstance, viewport.getRayFromClient);
         }
         //document.addEventListener("keydown", drive);
+        document.addEventListener("mousedown", hndMouseClick);
         f.Loop.addEventListener("loopFrame" /* f.EVENT.LOOP_FRAME */, update);
         f.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
-    }
-    function getDistance(_car, _pointer) {
     }
     function hndMouseClick(_event) {
         if (_event.button != 2)
@@ -86,12 +84,22 @@ var Script;
         const ray = viewport.getRayFromClient(vecScreen);
         console.log(ray);
         const cubas = viewport.getBranch().getChildrenByName("CUBA");
-        for (const cuba of cubas) {
-            const vecDistance = ray.getDistance(cuba.mtxWorld.translation);
-            console.log(vecDistance.magnitude);
+        for (const cubaToCheck of cubas) {
+            const vecDistance = ray.getDistance(cubaToCheck.mtxWorld.translation);
+            cubaToCheck.getComponent(f.ComponentMaterial).clrPrimary = f.Color.CSS("yellow");
+            if (vecDistance.magnitude < 1) {
+                cuba = cubaToCheck.getComponent(Script.CubaControl);
+                cubaToCheck.getComponent(f.ComponentMaterial).clrPrimary = f.Color.CSS("red");
+            }
         }
     }
     function update() {
+        const wroom = f.Keyboard.mapToTrit([f.KEYBOARD_CODE.S], [f.KEYBOARD_CODE.W]);
+        const round = f.Keyboard.mapToTrit([f.KEYBOARD_CODE.A], [f.KEYBOARD_CODE.D]);
+        control.setInput(wroom);
+        cuba.drive(control.getOutput());
+        control.setInput(round);
+        cuba.rotate(control.getOutput());
         // ƒ.Physics.simulate();  // if physics is included and used
         viewport.draw();
         f.AudioManager.default.update();
